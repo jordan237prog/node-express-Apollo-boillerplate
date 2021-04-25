@@ -1,4 +1,7 @@
+import cors from 'cors';
 import express from 'express';
+
+app.use(cors());
 var app = express();
 
 app.get('/', function (req, res) {

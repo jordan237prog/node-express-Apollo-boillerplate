@@ -7,6 +7,11 @@ const config = {
 
   api: {
     url: 'http://www.mocky.io/v2/5aa722ea2f0000e8048ea463',
+    
+    graphqlEndPoint: {
+      dev: 'http://localhost:4000/graphql',
+      production: 'http://localhost:4000/graphql',
+    },
   },
 };
 

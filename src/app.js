@@ -3,30 +3,14 @@ import cors from 'cors';
 import express from 'express';
 
 import config from './Config/index.js';
+import schema from './Models/index.js';
+import resolvers from './Resolvers/index.js';
 
 const app = express();
 app.use(cors());
-const { ApolloServer, gql } = apollo;
+
+const { ApolloServer } = apollo;
 const port = config.port;
-
-const schema = gql`
-  type Query {
-    me: User
-  }
-
-  type User {
-    username: String!
-  }
-`;
-const resolvers = {
-  Query: {
-    me: () => {
-      return {
-        username: 'Robin',
-      };
-    },
-  },
-};
 
 const server = new ApolloServer({
   typeDefs: schema,
@@ -36,7 +20,7 @@ const server = new ApolloServer({
 server.applyMiddleware({ app, path: '/graphql' });
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello! Here is the root dir of the project');
 });
 
 app.listen(port, () => {
